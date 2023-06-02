@@ -50,3 +50,20 @@ class ClienteDAO():
                 return clientes
         except:
             return None
+
+    def atualizar(self, cliente):
+        try:
+            sql = "UPDATE Cliente " \
+                  "SET email=%s, ultimo_nome=%s, primeiro_nome=%s, " \
+                  "senha=%s, cidade=%s, bairro=%s" \
+                  "rua=%s, numero=%s WHERE id=%s"
+
+            cursor = self.con.cursor()
+            cursor.execute(sql, (cliente.email, cliente.ultimo_nome,
+                                 cliente.primeiro_nome,cliente.senha,
+                                 cliente.cidade,cliente.bairro,
+                                 cliente.rua, cliente.numero, cliente.id))
+            self.con.commit()
+            return cursor.rowcount
+        except:
+            return 0

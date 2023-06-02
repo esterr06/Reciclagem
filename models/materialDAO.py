@@ -1,15 +1,15 @@
-class TipomaterialDAO():
+class MaterialDAO():
     def __init__(self, con):
         self.con = con
 
     # CRUD - Create, Retrieve, Update, Delete
-    def inserir(self, tipomaterial):
+    def inserir(self, material):
         try:
-            sql = "INSERT INTO tipo_de_material(nome, descricao) " \
-                  "VALUES (%s, %s)"
+            sql = "INSERT INTO material(valor, peso, tipo, data) " \
+                  "VALUES (%s, %s, %s, %s)"
 
             cursor = self.con.cursor()
-            cursor.execute(sql, (tipomaterial.nome, tipomaterial.descricao))
+            cursor.execute(sql, (material.valor, material.peso, material.tipo, material.data))
             self.con.commit()
             id = cursor.lastrowid
             return id

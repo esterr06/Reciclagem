@@ -37,16 +37,31 @@ class FuncionarioDAO():
         try:
             cursor = self.con.cursor()
             if codigo != None:
-                # pegar somente uma planta
                 sql = "SELECT * FROM Funcionario WHERE codigo=%s"
                 cursor.execute(sql, (codigo,))
                 funcionario = cursor.fetchone()
                 return funcionario
             else:
-                # pegar todas as plantas
                 sql = "SELECT * FROM Funcionario"
                 cursor.execute(sql)
                 funcionario = cursor.fetchall()
                 return funcionario
         except:
             return None
+
+    def atualizar(self, funcionario):
+        try:
+            sql = "UPDATE Funcionario " \
+                  "SET primeiro_nome=%s, ultimo_nome=%s, data_de_nasc=%s " \
+                  "email=%s, senha=%s, cidade=%s, bairro=%s" \
+                  "rua=%s, numero=%s WHERE id=%s"
+
+            cursor = self.con.cursor()
+            cursor.execute(sql, (funcionario.primeiro_nome, funcionario.ultimo_nome,
+                                 funcionario.data_de_nasc, funcionario.email,
+                                 funcionario.senha, funcionario.cidade, funcionario.bairro,
+                                 funcionario.rua, funcionario.numero, funcionario.id))
+            self.con.commit()
+            return cursor.rowcount
+        except:
+            return 0

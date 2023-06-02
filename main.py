@@ -66,6 +66,7 @@ def cadastrar():
 
         if codigo > 0:
             flash("Cadastrado com sucesso! Código %d" % codigo, "success")
+            redirect()
         else:
             flash("Erro ao cadastrar!", "danger")
 
@@ -75,7 +76,6 @@ def cadastrar():
 @app.route('/cadastrar_funcionario', methods=['GET', 'POST'])
 def cadastrarfuncionario():
     if request.method == "POST":
-        # valor = request.form['campoHTML']
         primeiro_nome = request.form['primeiro_nome']
         ultimo_nome = request.form['ultimo_nome']
         data_de_nasc = request.form['data_de_nasc']
@@ -100,6 +100,34 @@ def cadastrarfuncionario():
     vartitulo = "Cadastro"
     return render_template("register_funcionario.html", titulo=vartitulo)
 
+@app.route('/atualizar_funcionario/<codigo>', methods=['GET', 'POST'])
+def atualizar_funcionario(codigo):
+    dao = FuncionarioDAO(get_db())
+
+    if request.method == "POST":
+        primeiro_nome = request.form['primeiro_nome']
+        ultimo_nome = request.form['ultimo_nome']
+        data_de_nasc = request.form['data_de_nasc']
+        email = request.form['email']
+        senha = request.form['senha']
+        cidade = request.form['cidade']
+        bairro = request.form['bairro']
+        rua = request.form['rua']
+        numero = request.form['numero']
+
+        funcionario = Funcionario(primeiro_nome, ultimo_nome, data_de_nasc, email,
+                          senha, cidade, bairro, rua, numero)
+        funcionario.setId(codigo)
+        ret = dao.atualizar(funcionario)
+
+        if codigo > 0:
+            flash("Ataulizar com sucesso! Código %d" % codigo, "success")
+        else:
+            flash("Erro ao atualizar!", "danger")
+
+    funcionario_db = dao.listar(codigo)
+    return render_template("atualizar_funcionario.html", funcionario=funcionario_db)
+
 @app.route('/cadastrar_tipo_material', methods=['GET', 'POST'])
 def cadastrartipomaterial():
     if request.method == "POST":
@@ -119,6 +147,27 @@ def cadastrartipomaterial():
 
     vartitulo = "Cadastro"
     return render_template("register_tipo_material.html", titulo=vartitulo)
+
+@app.route('/cadastrar_pedido', methods=['GET', 'POST'])
+def cadastrarmaterial():
+    if request.method == "POST":
+        # valor = request.form['campoHTML']
+        nome = request.form['nome']
+        descricao = request.form['descricao']
+
+        tipomaterial = Tipomaterial(nome, descricao)
+
+        dao = TipomaterialDAO(get_db())
+        codigo = dao.inserir(tipomaterial)
+
+        if codigo > 0:
+            flash("Cadastrado com sucesso! Código %d" % codigo, "success")
+        else:
+            flash("Erro ao cadastrar!", "danger")
+
+    vartitulo = "Cadastro"
+    return render_template("register_tipo_material.html", titulo=vartitulo)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -149,6 +198,18 @@ def listar_cliente():
     dao = ClienteDAO(get_db())
     cliente_db = dao.listar()
     return render_template('listar_cliente.html', cliente=cliente_db)
+
+@app.route('/listar_funcionario', methods=['GET',])
+def listar_funcionario():
+    dao = FuncionarioDAO(get_db())
+    funcionario_db = dao.listar()
+    return render_template('listar_funcionario.html', funcionario=funcionario_db)
+
+@app.route('/listar_tmaterial', methods=['GET',])
+def listar_tmaterial():
+    dao = TipomaterialDAO(get_db())
+    tmaterial_db = dao.listar()
+    return render_template('listar_tmaterial.html', tmaterial=tmaterial_db)
 
 @app.route('/logout')
 def logout():

@@ -28,41 +28,20 @@
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Lista de Funcionários</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Lista de Materiais</h6>
                 <div class="dropdown no-arrow">
                     <div class="reply-form">
                         <table class="table">
                             <thead>
-                            <th>Código</th>
-                            <th>Primeiro Nome</th>
-                            <th>Último Nome</th>
-                            <th>Data de Nascimento</th>
-                            <th>Email</th>
-                            <th>Cidade</th>
-                            <th>Bairro</th>
-                            <th>Rua</th>
-                            <th>Número</th>
-                            <th>Editar</th>
+                            <th>Nome</th>
+                            <th>Quantidade</th>
                             </thead>
                             <tbody>
-                            {% if funcionario %}
-                                {% for p in funcionario %}
+                            {% if tmaterial %}
+                                {% for p in tmaterial %}
                                     <tr>
                                         <td>{{ p[0] }}</td>
                                         <td>{{ p[1] }}</td>
-                                        <td>{{ p[2] }}</td>
-                                        <td>{{ p[3] }}</td>
-                                        <td>{{ p[4] }}</td>
-                                        <td>{{ p[6] }}</td>
-                                        <td>{{ p[7] }}</td>
-                                        <td>{{ p[8] }}</td>
-                                        <td>{{ p[9] }}</td>
-                                        <td>
-                                            <a href="{{ url_for('atualizar_funcionario', codigo=funcionario[0]) }}" data-toggle="collapse" data-target="#collapseTwo"
-                                               aria-expanded="true" aria-controls="collapseTwo">
-                                                <button class="btn btn-primary btn-user btn-block" type="submit">Atualizar</button>
-                                            </a>
-                                        </td>
                                     </tr>
                                 {% endfor %}
                             {% endif %}
@@ -70,8 +49,7 @@
                         </table>
                     </div>
                 </div>
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
