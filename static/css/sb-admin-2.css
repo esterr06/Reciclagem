@@ -10465,7 +10465,7 @@ a:focus {
 }
 
 .sidebar .sidebar-brand .sidebar-brand-text {
-  display: none;
+  font-size: 2rem;
 }
 
 .sidebar hr.sidebar-divider {
@@ -10563,7 +10563,7 @@ a:focus {
     font-size: 2rem;
   }
   .sidebar .sidebar-brand .sidebar-brand-text {
-    display: inline;
+    font-size: 2rem;
   }
   .sidebar .sidebar-heading {
     text-align: left;
@@ -10618,7 +10618,7 @@ a:focus {
     font-size: 2rem;
   }
   .sidebar.toggled .sidebar-brand .sidebar-brand-text {
-    display: none;
+    font-size: 2rem;
   }
   .sidebar.toggled .sidebar-heading {
     text-align: center;

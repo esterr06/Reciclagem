@@ -31,21 +31,21 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
+                    <img src="static/css/frente.png" height="720px" width="520px" >
+                    <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Crie uma conta!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Crie uma conta</h1>
                             </div>
                             <form action="{{ url_for('cadastrar') }}" method="POST" class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" name="primeiro_nome" class="form-control form-control-user" id="primeiro_nome"
-                                            placeholder="Primeiro Nome" required>
+                                            placeholder="Nome" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" name="ultimo_nome" class="form-control form-control-user" id="ultimo_nome"
-                                            placeholder="Ultimo nome" required>
+                                            placeholder="Sobrenome" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" name="numero" class="form-control form-control-user" id="numero"
-                                            placeholder="N° da casa" required>
+                                            placeholder="N°" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -79,18 +79,15 @@
                                 <button class="btn btn-primary btn-user btn-block" type="submit">Cadastrar</button>
                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
+                                    <i class="fab fa-google fa-fw"></i> Cadastrar com Google
                                 </a>
                                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                    <i class="fab fa-facebook-f fa-fw"></i> Cadastrar com Facebook
                                 </a>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="/">Já possui uma conta? Login!</a>
+                                <a class="small" href="/">Já possui uma conta? Login</a>
                             </div>
                         </div>
                     </div>
